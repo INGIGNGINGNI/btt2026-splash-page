@@ -79,7 +79,7 @@ img {
     bottom: 0;
     left: 50%;
     width: 100vw;
-    z-index: -2;
+    z-index: 0;
     overflow: hidden;
     transform: translateX(-50%);
     background: url('../images/background.png') var(--splash-background-position) / cover no-repeat;
@@ -573,6 +573,8 @@ br.venue-br {
         inset: auto;
         height: auto;
         min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
         overflow-x: clip;
         overflow-y: visible;
     }
@@ -592,6 +594,8 @@ br.venue-br {
         width: 100vw;
         height: auto;
         min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
         aspect-ratio: auto;
         transform: none;
     }
@@ -624,6 +628,7 @@ br.venue-br {
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
+        padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
     }
 
     .splash__content {
@@ -633,7 +638,10 @@ br.venue-br {
         width: 100%;
         height: auto;
         min-height: 100vh;
-        padding: var(--space-8) var(--space-4);
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding: var(--space-8) var(--space-4)
+            calc(var(--bt-header-action-height) + var(--space-8) + env(safe-area-inset-bottom));
         transform: none;
     }
 
@@ -696,6 +704,8 @@ br.venue-br {
 @media (min-width: 576px) and (max-width: 991px) {
     .splash__content {
         min-height: calc(100vh + 96px);
+        min-height: calc(100svh + 96px);
+        min-height: calc(100dvh + 96px);
     }
 
     .splash__scene {
@@ -726,7 +736,8 @@ br.venue-br {
     .splash__content {
         left: 0;
         width: 100%;
-        padding: var(--space-8) var(--space-3) var(--space-12);
+        padding: var(--space-8) var(--space-3)
+            calc(var(--bt-header-action-height) + var(--space-8) + env(safe-area-inset-bottom));
     }
 
     .splash__event {
