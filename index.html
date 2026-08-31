@@ -21,32 +21,37 @@
 
 <body>
     <main class="splash" aria-labelledby="splash-title">
-        <div class="splash__background" aria-hidden="true">
-            <video class="splash__background-video splash__background-video--a" muted playsinline preload="auto"
-                poster="images/background.png" disablepictureinpicture>
-                <source src="video/background.mp4" type="video/mp4">
-            </video>
-            <video class="splash__background-video splash__background-video--b" muted playsinline preload="auto"
-                poster="images/background.png" disablepictureinpicture>
-                <source src="video/background.mp4" type="video/mp4">
-            </video>
-        </div>
-
         <div class="splash__frame">
+            <div class="splash__background" aria-hidden="true">
+                <video class="splash__background-video splash__background-video--a" muted playsinline preload="auto"
+                    poster="images/background.png" disablepictureinpicture>
+                    <source src="video/background.mp4" type="video/mp4">
+                </video>
+                <video class="splash__background-video splash__background-video--b" muted playsinline preload="auto"
+                    poster="images/background.png" disablepictureinpicture>
+                    <source src="video/background.mp4" type="video/mp4">
+                </video>
+            </div>
+
             <section class="splash__content">
                 <h1 id="splash-title" class="visually-hidden">New World New Playbook — BetterTrade 2026</h1>
                 <img class="splash__logo-art" src="images/splash-btt2026-logo.webp" width="1800" height="900"
                     alt="efin และ BetterTrade — New World New Playbook, BetterTrade 2026" fetchpriority="high">
+                <p class="splash__logo-sub">
+                    <strong>PLAYBOOK คู่มือการลงทุนส่วนตัว</strong>
+                    <span>ที่คอยนำทาง สแกนทุกโอกาสการลงทุน ในโลกยุคใหม่</span>
+                </p>
 
                 <div class="splash__event" aria-label="รายละเอียดงาน BetterTrade 2026">
                     <p class="splash__date">31 ตุลาคม - 1 พฤศจิกายน 2569</p>
                     <p class="splash__time"><time datetime="2026-10-31T09:00:00+07:00">เวลา 09:00 - 18:30 น.</time></p>
-                    <p class="splash__venue">Samyan Mitrtown Hall <br>ชั้น 5 ศูนย์การค้าสามย่านมิตรทาวน์</p>
-                    <div class="splash__actions" aria-label="ตัวเลือกการเข้าชมเว็บไซต์">
-                        <a class="bt-action-button bt-action-button--secondary bt-action-button--xl bt-action-button--header splash__website"
-                            href="https://www.efinancethai.com/">เข้าสู่เว็บไซต์ efinanceThai</a>
-                        <div id="cta-slot" class="splash__register"></div>
-                    </div>
+                    <p class="splash__venue">Samyan Mitrtown Hall <br class="venue-br">ชั้น 5 ศูนย์การค้าสามย่านมิตรทาวน์</p>
+                </div>
+
+                <div class="splash__sponsors" aria-label="ผู้สนับสนุน">
+                    <ul class="sponsor__logos sponsor__logos--lead">
+                        <li class="sponsor__logo sponsor__logo--lead"></li>
+                    </ul>
                 </div>
             </section>
 
@@ -93,8 +98,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="splash__actions" aria-label="ตัวเลือกการเข้าชมเว็บไซต์">
+            <a class="bt-action-button bt-action-button--secondary bt-action-button--xl bt-action-button--header splash__website"
+                href="https://www.efinancethai.com/">เข้าสู่เว็บไซต์ efinanceThai</a>
+            <div id="cta-slot" class="splash__register"></div>
+        </div>
     </main>
     <script type="module" src="js/background-video-loop.js"></script>
+    <script type="module" src="js/responsive-scene.js"></script>
+    <script type="module" src="js/scroll-overlay.js"></script>
     <script type="module" src="js/hero-v2-cta.js"></script>
 </body>
 
