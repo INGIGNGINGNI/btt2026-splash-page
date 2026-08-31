@@ -567,7 +567,7 @@ br.venue-br {
         --splash-title-event-gap: 0;
         --splash-event-size: 24px;
         --splash-scene-left: 50%;
-        --splash-scene-width: min(86vh, 162vw);
+        --splash-scene-width: min(92vh, 162vw);
 
         position: relative;
         inset: auto;
@@ -640,7 +640,7 @@ br.venue-br {
         min-height: 100vh;
         min-height: 100svh;
         min-height: 100dvh;
-        padding: var(--space-8) var(--space-4)
+        padding: var(--space-12) var(--space-4)
             calc(var(--bt-header-action-height) + var(--space-8) * 3 + env(safe-area-inset-bottom));
         transform: none;
     }
@@ -736,7 +736,7 @@ br.venue-br {
     .splash__content {
         left: 0;
         width: 100%;
-        padding: var(--space-8) var(--space-3)
+        padding: var(--space-12) var(--space-3)
             calc(var(--bt-header-action-height) + var(--space-8) * 2 + env(safe-area-inset-bottom));
     }
 
