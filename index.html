@@ -3,32 +3,33 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>BetterTrade 2026: New World New Playbook</title>
     <meta name="description"
         content="BetterTrade 2026 — New World New Playbook วันที่ 31 ตุลาคม – 1 พฤศจิกายน 2569 ณ Samyan Mitrtown Hall">
     <meta name="theme-color" content="#0d1825">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="preload" href="video/background.mp4" as="video" type="video/mp4">
     <link rel="preload" href="images/splash-btt2026-logo.webp" as="image" fetchpriority="high">
     <link rel="preload" href="images/ship.webp" as="image" fetchpriority="high">
     <link rel="preload" href="fonts/fc-minimal-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/fc-minimal-medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/splash.css">
+    <link rel="stylesheet" href="css/splash.css?v=20260831-3">
 </head>
 
 <body>
     <main class="splash" aria-labelledby="splash-title">
         <div class="splash__frame">
             <div class="splash__background" aria-hidden="true">
-                <video class="splash__background-video splash__background-video--a" muted playsinline preload="auto"
-                    poster="images/background.png" disablepictureinpicture>
+                <video class="splash__background-video splash__background-video--a" autoplay muted loop playsinline
+                    webkit-playsinline preload="auto" poster="images/background.png" disablepictureinpicture>
+                    <source src="video/background-mobile.mp4" type="video/mp4" media="(max-width: 991px)">
                     <source src="video/background.mp4" type="video/mp4">
                 </video>
-                <video class="splash__background-video splash__background-video--b" muted playsinline preload="auto"
-                    poster="images/background.png" disablepictureinpicture>
+                <video class="splash__background-video splash__background-video--b" muted playsinline
+                    webkit-playsinline preload="auto" poster="images/background.png" disablepictureinpicture>
+                    <source src="video/background-mobile.mp4" type="video/mp4" media="(max-width: 991px)">
                     <source src="video/background.mp4" type="video/mp4">
                 </video>
             </div>
@@ -105,8 +106,8 @@
             <div id="cta-slot" class="splash__register"></div>
         </div>
     </main>
-    <script type="module" src="js/background-video-loop.js"></script>
-    <script type="module" src="js/responsive-scene.js"></script>
+    <script type="module" src="js/background-video-loop.js?v=20260831-2"></script>
+    <script type="module" src="js/responsive-scene.js?v=20260831-2"></script>
     <script type="module" src="js/scroll-overlay.js"></script>
     <script type="module" src="js/hero-v2-cta.js"></script>
 </body>

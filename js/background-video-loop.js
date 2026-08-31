@@ -1,6 +1,8 @@
 const videos = [...document.querySelectorAll('.splash__background-video')];
+const mobileQuery = window.matchMedia('(max-width: 991px)');
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if (videos.length >= 2 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (videos.length >= 2 && !reducedMotionQuery.matches) {
     const crossfadeSeconds = 1.2;
     const crossfadeMilliseconds = crossfadeSeconds * 1000;
     let activeIndex = 0;
@@ -12,6 +14,12 @@ if (videos.length >= 2 && !window.matchMedia('(prefers-reduced-motion: reduce)')
     const standbyVideo = () => videos[(activeIndex + 1) % videos.length];
 
     const playSilently = async (video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+
         try {
             await video.play();
             return true;
@@ -67,10 +75,21 @@ if (videos.length >= 2 && !window.matchMedia('(prefers-reduced-motion: reduce)')
     const start = async () => {
         const firstVideo = activeVideo();
         firstVideo.currentTime = 0;
+        firstVideo.classList.add('is-active');
+
+        if (mobileQuery.matches) {
+            firstVideo.loop = true;
+            standbyVideo().pause();
+            standbyVideo().preload = 'none';
+            await playSilently(firstVideo);
+            return;
+        }
+
+        firstVideo.loop = false;
+        standbyVideo().preload = 'auto';
+        standbyVideo().load();
 
         if (!await playSilently(firstVideo)) return;
-
-        firstVideo.classList.add('is-active');
         cancelAnimationFrame(animationFrame);
         animationFrame = requestAnimationFrame(monitorPlayback);
     };
@@ -94,5 +113,11 @@ if (videos.length >= 2 && !window.matchMedia('(prefers-reduced-motion: reduce)')
         }
 
         playSilently(activeVideo());
+    });
+
+    window.addEventListener('pageshow', () => playSilently(activeVideo()));
+    document.addEventListener('touchstart', () => playSilently(activeVideo()), {
+        once: true,
+        passive: true,
     });
 }
