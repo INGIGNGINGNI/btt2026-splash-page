@@ -641,7 +641,7 @@ br.venue-br {
         min-height: 100svh;
         min-height: 100dvh;
         padding: var(--space-8) var(--space-4)
-            calc(var(--bt-header-action-height) + var(--space-8) * 2 + env(safe-area-inset-bottom));
+            calc(var(--bt-header-action-height) + var(--space-8) * 3 + env(safe-area-inset-bottom));
         transform: none;
     }
 
