@@ -302,7 +302,7 @@
     --section-heading-tracking: var(--letter-spacing-0);
     --rule-width-subtle: var(--border-width-1);
     --rule-width-emphasis: var(--border-width-2);
-    --card-radius: var(--radius-2);
+    --card-radius: var(--radius-1);
     --pill-radius: var(--radius-pill);
     --touch-target-md: var(--space-10);
     --button-height-md: var(--space-12);

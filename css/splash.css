@@ -759,8 +759,7 @@ br.venue-br {
     }
 
     .splash__sponsors {
-        --bt-sponsor-lead-width:
-            calc(min(var(--bt-sponsor-md-width), (100vw - var(--space-6) - var(--space-1) * 2) / 3) * 258 / 188);
+        --bt-sponsor-lead-width: clamp(210px, 44vw, 248px);
     }
 
     .splash__content {
@@ -771,9 +770,9 @@ br.venue-br {
     }
 
     .splash__event {
-        padding: 96px var(--space-4) var(--space-8);
+        margin-top: var(--space-0);
+        padding: 150px var(--space-4) var(--space-8);
         width: 100%;
-        line-height: 1.22;
         transform: translateY(var(--splash-mobile-details-offset));
     }
 
