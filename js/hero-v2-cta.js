@@ -66,9 +66,7 @@ function resolveCssLength(tokenName, fallback) {
     return Number.isFinite(value) && value > 0 ? value : fallback;
 }
 
-// รอ FC Minimal เพื่อให้ความกว้าง pill คำนวณจาก glyph จริง
-const ready = document.fonts ? document.fonts.ready : Promise.resolve();
-ready.then(() => {
+function initializeCtas() {
     const headerActionWidth = resolveCssLength('--bt-header-action-width', 120);
     const headerActionHeight = resolveCssLength('--bt-header-action-height', 40);
     const headerActionRim = resolveCssLength('--bt-header-action-rim', 2);
@@ -117,5 +115,7 @@ ready.then(() => {
             pillBackground: 'linear-gradient(180deg, #20242a 0%, #111318 55%, #050607 100%)',
         }, goToRegistration);
     });
-});
+}
+
+initializeCtas();
     
