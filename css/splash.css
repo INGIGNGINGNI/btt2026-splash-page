@@ -114,6 +114,20 @@ img {
     opacity: 1;
 }
 
+.splash__frame::before {
+    content: '';
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    display: none;
+    pointer-events: none;
+    transform: translateX(-50%);
+    background: rgb(0 0 0 / 0.45);
+}
+
 .splash__frame::after {
     content: '';
     position: absolute;
@@ -660,7 +674,8 @@ br.venue-br {
         --splash-event-size: 20px;
 
         width: min(calc(100vw - var(--space-8)), 720px);
-        padding: var(--space-8) var(--space-4) 120px;
+        padding: 120px var(--space-4) var(--space-8);
+        /* padding: var(--space-8) var(--space-4) 120px; */
         margin-top: auto;
         display: flex;
         flex-direction: column;
@@ -696,6 +711,11 @@ br.venue-br {
         height: auto;
         transform: translateX(-50%);
     }
+
+    .splash__scene.is-gap-aligned {
+        top: var(--splash-scene-responsive-top);
+        bottom: auto;
+    }
 }
 
 @media (max-width: 991px) and (min-aspect-ratio: 6 / 5) {
@@ -718,18 +738,24 @@ br.venue-br {
 
 @media (max-width: 575px) {
     .splash {
-        --splash-title-width: min(48vh, 96%);
+        --splash-title-width: min(36vh, 96%);
+        --splash-mobile-details-offset: clamp(-97px, calc(138.75px - 41vw), -15px);
+    }
+
+    .splash__frame::before {
+        display: block;
     }
 
     .splash__frame::after,
     .splash__frame.is-scrolled::after {
+        display: none;
         bottom: calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) + env(safe-area-inset-bottom));
         opacity: 1;
         background: linear-gradient(180deg,
                 rgb(0 0 0 / 0) 0%,
                 rgb(0 0 0 / 0.08) 34%,
                 rgb(0 0 0 / 0.48) 72%,
-                rgb(0 0 0 / 0.72) 100%)
+                rgb(0 0 0 / 0.72) 100%);
     }
 
     .splash__sponsors {
@@ -740,13 +766,19 @@ br.venue-br {
     .splash__content {
         left: 0;
         width: 100%;
-        padding: var(--space-12) var(--space-3)
+        padding: var(--space-8) var(--space-3)
             calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) * 2 + env(safe-area-inset-bottom));
     }
 
     .splash__event {
+        padding: 96px var(--space-4) var(--space-8);
         width: 100%;
         line-height: 1.22;
+        transform: translateY(var(--splash-mobile-details-offset));
+    }
+
+    .splash__sponsors {
+        transform: translateY(var(--splash-mobile-details-offset));
     }
 
     .splash__event p {
@@ -789,14 +821,8 @@ br.venue-br {
     }
 
     .splash__logo-sub {
-        font-size: var(--font-size-16);
-    }
-}
-
-@media (max-width: 991px) {
-    .splash__scene.is-gap-aligned {
-        top: var(--splash-scene-responsive-top);
-        bottom: auto;
+        margin: var(--space-4) var(--space-0) var(--space-4);
+        font-size: var(--font-size-14);
     }
 }
 
