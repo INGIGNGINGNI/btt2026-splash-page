@@ -260,9 +260,9 @@ img {
 }
 
 .splash__register {
-    width: var(--bt-header-action-width);
-    min-width: var(--bt-header-action-width);
+    width: max-content;
     min-height: var(--bt-header-action-height);
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
 }
@@ -723,6 +723,7 @@ br.venue-br {
 
     .splash__frame::after,
     .splash__frame.is-scrolled::after {
+        bottom: calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) + env(safe-area-inset-bottom));
         opacity: 1;
         background: linear-gradient(180deg,
                 rgb(0 0 0 / 0) 0%,
@@ -740,7 +741,7 @@ br.venue-br {
         left: 0;
         width: 100%;
         padding: var(--space-12) var(--space-3)
-            calc(var(--bt-header-action-height) + var(--space-8) * 2 + env(safe-area-inset-bottom));
+            calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) * 2 + env(safe-area-inset-bottom));
     }
 
     .splash__event {
@@ -763,10 +764,16 @@ br.venue-br {
     }
 
     .splash__actions {
-        gap: var(--space-2);
+        display: grid;
+        grid-template-columns: max-content;
+        grid-auto-flow: row;
+        justify-content: center;
+        justify-items: stretch;
+        gap: var(--space-3);
     }
 
     .splash__website {
+        width: auto;
         height: var(--bt-header-action-height);
         min-height: var(--bt-header-action-height);
         padding-inline: var(--space-6);

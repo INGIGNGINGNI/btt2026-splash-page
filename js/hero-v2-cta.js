@@ -86,9 +86,10 @@ function initializeCtas() {
         heroCtaButton?.destroy?.();
         playbookCtaButton?.destroy?.();
         heroCtaButton = mountRegisterButton(heroCtaSlot, {
-            width: headerActionWidth,
             height: headerActionHeight,
+            label: 'ลงทะเบียน BetterTrade 2026',
             fontSize: 16,
+            paddingX: 24,
             rim: headerActionRim,
             textColor: '#ffffff',
             pillBackground: 'linear-gradient(180deg, #20242a 0%, #111318 55%, #050607 100%)',
@@ -115,6 +116,14 @@ function initializeCtas() {
             pillBackground: 'linear-gradient(180deg, #20242a 0%, #111318 55%, #050607 100%)',
         }, goToRegistration);
     });
+}
+
+if (document.fonts) {
+    try {
+        await document.fonts.load("400 16px 'FC Minimal'");
+    } catch {
+        // The preloaded font normally resolves here; keep the CTA usable if it does not.
+    }
 }
 
 initializeCtas();
