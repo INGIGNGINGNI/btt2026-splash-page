@@ -13,9 +13,11 @@
     <link rel="preload" href="images/ship.webp" as="image" fetchpriority="high">
     <link rel="preload" href="fonts/fc-minimal-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/fc-minimal-medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="modulepreload" href="js/hero-v2-cta.js?v=20260902-1">
+    <link rel="modulepreload" href="js/liquid-metal-button.js">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/splash.css?v=20260902-1">
+    <link rel="stylesheet" href="css/splash.css?v=20260902-2">
 </head>
 
 <body>
@@ -103,13 +105,16 @@
         <div class="splash__actions" aria-label="ตัวเลือกการเข้าชมเว็บไซต์">
             <a class="bt-action-button bt-action-button--secondary bt-action-button--xl bt-action-button--header splash__website"
                 href="https://www.efinancethai.com/">เข้าสู่เว็บไซต์ efinanceThai</a>
-            <div id="cta-slot" class="splash__register"></div>
+            <div id="cta-slot" class="splash__register">
+                <button class="bt-action-button bt-action-button--primary bt-action-button--header splash__register-fallback"
+                    type="button">ลงทะเบียน</button>
+            </div>
         </div>
     </main>
     <script type="module" src="js/background-video-loop.js?v=20260831-2"></script>
     <script type="module" src="js/responsive-scene.js?v=20260831-2"></script>
     <script type="module" src="js/scroll-overlay.js"></script>
-    <script type="module" src="js/hero-v2-cta.js"></script>
+    <script type="module" src="js/hero-v2-cta.js?v=20260902-1"></script>
 </body>
 
 </html>
