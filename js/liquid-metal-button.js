@@ -285,7 +285,11 @@ export function createLiquidMetalButton(opts = {}) {
                     u_contour: 0,
                     u_angle: 45,
                     u_scale: 8,
-                    u_shape: 1,
+                    // Use the shader's responsive full-canvas shape. The circle
+                    // mode only fills a square based on the button height, so
+                    // its animated metal stops short when a longer label makes
+                    // the pill wider.
+                    u_shape: 0,
                     u_offsetX: 0.1,
                     u_offsetY: -0.1,
                 },
