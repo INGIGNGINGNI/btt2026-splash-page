@@ -784,13 +784,13 @@ br.venue-br {
     body {
         height: 100%;
         overflow: hidden;
-        overscroll-behavior: none;
+        overscroll-behavior: auto;
     }
 
     body {
         position: fixed;
         inset: 0;
-        touch-action: pan-y;
+        touch-action: auto;
     }
 
     .splash {
@@ -835,10 +835,10 @@ br.venue-br {
         padding: var(--space-8) var(--space-3)
             calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) * 2 + env(safe-area-inset-bottom));
         overflow-x: hidden;
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-y;
+        overflow-y: scroll;
+        overscroll-behavior: auto;
+        -webkit-overflow-scrolling: auto;
+        touch-action: auto;
     }
 
     .splash__event {
