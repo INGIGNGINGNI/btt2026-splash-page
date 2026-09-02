@@ -788,8 +788,12 @@ br.venue-br {
     }
 
     body {
-        position: fixed;
-        inset: 0;
+        position: relative;
+        inset: auto;
+        min-height: 0;
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
         touch-action: auto;
     }
 
@@ -797,8 +801,8 @@ br.venue-br {
         --splash-title-width: min(36vh, 96%);
         --splash-mobile-scene-offset: clamp(-97px, calc(138.75px - 41vw), -15px);
 
-        position: fixed;
-        inset: 0;
+        position: relative;
+        inset: auto;
         height: 100vh;
         height: 100svh;
         height: 100dvh;
@@ -862,6 +866,10 @@ br.venue-br {
     }
 
     .splash__actions {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: none;
         display: grid;
         grid-template-columns: max-content;
         grid-auto-flow: row;
