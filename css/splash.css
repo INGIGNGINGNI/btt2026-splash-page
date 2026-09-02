@@ -267,12 +267,6 @@ img {
     justify-content: center;
 }
 
-.splash__register-fallback {
-    width: 100%;
-    height: var(--bt-header-action-height);
-    flex: 0 0 auto;
-}
-
 .splash__website {
     height: var(--bt-header-action-height);
     min-height: var(--bt-header-action-height);
