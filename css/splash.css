@@ -780,21 +780,31 @@ br.venue-br {
 }
 
 @media (max-width: 575px) {
-    html,
-    body {
-        height: 100%;
-        overflow: hidden;
+    html {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
         overscroll-behavior: auto;
+        scrollbar-width: none;
     }
 
     body {
-        position: relative;
+        position: static;
         inset: auto;
-        min-height: 0;
-        height: 100vh;
-        height: 100svh;
-        height: 100dvh;
-        touch-action: auto;
+        height: auto;
+        min-height: 100%;
+        overflow-x: clip;
+        overflow-y: visible;
+        overscroll-behavior: auto;
+        touch-action: pan-y;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
     }
 
     .splash {
@@ -803,11 +813,12 @@ br.venue-br {
 
         position: relative;
         inset: auto;
-        height: 100vh;
-        height: 100svh;
-        height: 100dvh;
-        min-height: 0;
-        overflow: hidden;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
+        overflow-x: clip;
+        overflow-y: visible;
     }
 
     .splash__frame::before {
@@ -829,20 +840,16 @@ br.venue-br {
     .splash__content {
         left: 0;
         width: 100%;
-        height: 100vh;
-        height: 100svh;
-        height: 100dvh;
-        max-height: 100vh;
-        max-height: 100svh;
-        max-height: 100dvh;
-        min-height: 0 !important;
+        height: auto;
+        max-height: none;
+        min-height: 100vh !important;
+        min-height: 100svh !important;
+        min-height: 100dvh !important;
         padding: var(--space-8) var(--space-3)
             calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) * 2 + env(safe-area-inset-bottom));
-        overflow-x: hidden;
-        overflow-y: scroll;
+        overflow: visible;
         overscroll-behavior: auto;
-        -webkit-overflow-scrolling: auto;
-        touch-action: auto;
+        touch-action: pan-y;
     }
 
     .splash__event {
@@ -866,10 +873,10 @@ br.venue-br {
     }
 
     .splash__actions {
-        position: absolute;
-        left: 0;
+        position: fixed;
+        left: 50%;
         bottom: 0;
-        transform: none;
+        transform: translateX(-50%);
         display: grid;
         grid-template-columns: max-content;
         grid-auto-flow: row;
