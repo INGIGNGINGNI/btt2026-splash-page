@@ -52,7 +52,7 @@ img {
     --splash-content-left: 5.3%;
     --splash-content-top: 50%;
     --splash-content-width: 42%;
-    --splash-title-width: 80%;
+    --splash-title-width: 72%;
     --splash-brand-title-gap: 16px;
     --splash-title-event-gap: clamp(18px, calc(15vh - 90px), 72px);
     --splash-event-size: clamp(16px, 1.55vw, 30px);
@@ -657,7 +657,7 @@ br.venue-br {
         --splash-event-size: 20px;
 
         width: min(calc(100vw - var(--space-8)), 720px);
-        padding: 120px var(--space-4) var(--space-8);
+        padding: var(--space-8) var(--space-4) 120px;
         margin-top: auto;
         display: flex;
         flex-direction: column;
