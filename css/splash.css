@@ -21,6 +21,8 @@ body {
     position: fixed;
     inset: 0;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     color: var(--color-text-inverse);
     font-family: var(--font-family-base), Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -64,6 +66,8 @@ img {
     inset: 0;
     width: 100%;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
     isolation: isolate;
     background: var(--color-neutral-950);
@@ -298,7 +302,7 @@ img {
 .sponsor-layout-picker {
     position: fixed;
     right: var(--space-4);
-    bottom: calc(var(--bt-header-action-height) + var(--space-12));
+    bottom: calc(var(--bt-header-action-height) + var(--space-12) + env(safe-area-inset-bottom));
     z-index: 300;
     margin: 0;
     padding: var(--space-2) var(--space-3);
@@ -362,6 +366,7 @@ img {
     margin: 0;
     min-height: var(--bt-header-action-height);
     padding: var(--space-4);
+    padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
     /* background-color: var(--color-surface-page); */
     background: radial-gradient(20% 100% at 35% 0%, rgba(115, 130, 170, 0.28), transparent), linear-gradient(rgb(25, 39, 74) 0%, rgb(2, 11, 30) 100%);
     display: flex;
@@ -634,6 +639,8 @@ br.venue-br {
         inset: 0;
         width: 100%;
         height: 100vh;
+        height: 100svh;
+        height: 100dvh;
         overflow: hidden;
         isolation: isolate;
         background: var(--color-neutral-950);
@@ -718,7 +725,7 @@ br.venue-br {
         display: block;
         position: fixed;
         right: auto;
-        bottom: calc(var(--bt-header-action-height) + var(--space-8));
+        bottom: calc(var(--bt-header-action-height) + var(--space-8) + env(safe-area-inset-bottom));
         left: 50%;
         width: 100vw;
         height: 240px;
@@ -959,7 +966,7 @@ br.venue-br {
 
     .sponsor-layout-picker {
         right: var(--space-3);
-        bottom: calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8));
+        bottom: calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8) + env(safe-area-inset-bottom));
         padding: var(--space-1) var(--space-2);
     }
 
