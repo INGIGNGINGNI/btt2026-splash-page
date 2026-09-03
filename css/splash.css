@@ -733,7 +733,7 @@ br.venue-br {
         bottom: calc(var(--bt-header-action-height) + var(--space-8) + env(safe-area-inset-bottom));
         left: 50%;
         width: 100vw;
-        height: 240px;
+        height: clamp(280px, 52vh, 420px);
         opacity: 1;
         transform: translateX(-50%);
         transition: opacity 320ms ease;
@@ -836,15 +836,57 @@ br.venue-br {
 }
 
 @media (min-width: 576px) and (max-width: 991px) {
+    html {
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    body {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+        min-height: 0;
+        overflow: hidden;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+    }
+
+    .splash {
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .splash__frame {
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100%;
+        min-height: 0 !important;
+        overflow: hidden;
+    }
+
     .splash__content {
-        min-height: calc(100vh + 96px);
-        min-height: calc(100svh + 96px);
-        min-height: calc(100dvh + 96px);
+        height: 100%;
+        max-height: 100%;
+        min-height: 0 !important;
+        overflow: hidden;
+        overscroll-behavior: none;
+        touch-action: manipulation;
     }
 
     .splash__event {
-        margin-top: 0;
+        /* margin-top: 0; */
         padding-top: var(--space-6);
+        padding-bottom: var(--space-0);
     }
 
     .splash__scene {
