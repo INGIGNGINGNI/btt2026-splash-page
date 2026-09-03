@@ -925,7 +925,16 @@ br.venue-br {
     .splash__event {
         padding-top: var(--space-8);
         padding-bottom: var(--space-4);
-        transform: translateY(clamp(-160px, -12vh, -96px));
+        transform: translateY(clamp(-64px, -4vh, -40px));
+    }
+
+    .splash__date {
+        font-size: calc(var(--font-size-24) + 2px);
+    }
+
+    .splash__time,
+    .splash__venue {
+        font-size: calc(var(--font-size-24) - 2px);
     }
 }
 
