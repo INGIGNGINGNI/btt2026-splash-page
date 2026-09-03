@@ -5,11 +5,6 @@ const logoSubtitle = document.querySelector('.splash__logo-sub');
 
 if (frame && content && scene && logoSubtitle) {
     const mobileQuery = window.matchMedia('(max-width: 991px)');
-    const phoneQuery = window.matchMedia('(max-width: 575px)');
-    const tabletQuery = window.matchMedia('(min-width: 576px)');
-    const tallTabletQuery = window.matchMedia(
-        '(min-width: 768px) and (max-width: 991px) and (min-height: 900px)',
-    );
     const desiredGap = 24;
     const firstAssetTopRatio = 0.255;
     let animationFrame = 0;
@@ -33,29 +28,8 @@ if (frame && content && scene && logoSubtitle) {
 
         scene.style.setProperty('--splash-scene-responsive-top', `${top}px`);
         scene.classList.add('is-gap-aligned');
-
-        if (phoneQuery.matches) {
-            frame.style.removeProperty('min-height');
-            content.style.removeProperty('min-height');
-            animationFrame = 0;
-            return;
-        }
-
-        const visualBottom = [scene, ...scene.querySelectorAll('*')]
-            .reduce((lowestEdge, element) => {
-                const elementBounds = element.getBoundingClientRect();
-                return Math.max(lowestEdge, elementBounds.bottom - frameBounds.top);
-            }, 0);
-        const responsiveBaseHeight = document.documentElement.clientHeight
-            + (tabletQuery.matches && !tallTabletQuery.matches ? 96 : 0);
-        const requiredHeight = Math.ceil(
-            tallTabletQuery.matches
-                ? responsiveBaseHeight
-                : Math.max(responsiveBaseHeight, visualBottom),
-        );
-
-        frame.style.minHeight = `${requiredHeight}px`;
-        content.style.minHeight = `${requiredHeight}px`;
+        frame.style.removeProperty('min-height');
+        content.style.removeProperty('min-height');
         animationFrame = 0;
     };
 
@@ -70,8 +44,6 @@ if (frame && content && scene && logoSubtitle) {
     resizeObserver.observe(logoSubtitle);
 
     mobileQuery.addEventListener('change', scheduleAlignment);
-    phoneQuery.addEventListener('change', scheduleAlignment);
-    tallTabletQuery.addEventListener('change', scheduleAlignment);
     window.addEventListener('resize', scheduleAlignment, { passive: true });
     window.addEventListener('load', scheduleAlignment, { once: true });
 
