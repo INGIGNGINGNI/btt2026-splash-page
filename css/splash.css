@@ -224,23 +224,15 @@ img {
 }
 
 .splash__sponsors {
-    --bt-sponsor-lg-width: 258px;
-    --bt-sponsor-lg-ratio: 258 / 120;
+    --bt-sponsor-lead-width: 258px;
+    --bt-sponsor-lead-ratio: 258 / 120;
     --bt-sponsor-md-width: 192px;
     --bt-sponsor-md-ratio: 192 / 90;
     --bt-sponsor-frame-bg: #eaeaea;
 
     flex: 0 1 auto;
-    width: min(var(--bt-sponsor-lg-width), 100%);
+    width: min(var(--bt-sponsor-lead-width), 100%);
     margin-top: var(--space-8);
-}
-
-.splash__sponsors[data-sponsor-layout="lg-1-md-2"] {
-    width: min(calc(var(--bt-sponsor-md-width) * 2 + var(--space-3)), 100%);
-}
-
-.splash__sponsors[data-sponsor-layout="lg-2"] {
-    width: min(calc(var(--bt-sponsor-lg-width) * 2 + var(--space-3)), 100%);
 }
 
 .sponsor__logos {
@@ -253,17 +245,12 @@ img {
     list-style: none;
 }
 
-.sponsor__logos--lg {
-    grid-template-columns: minmax(0, var(--bt-sponsor-lg-width));
+.sponsor__logos--lead {
+    grid-template-columns: minmax(0, var(--bt-sponsor-lead-width));
 }
 
 .sponsor__logos--md {
     grid-template-columns: minmax(0, var(--bt-sponsor-md-width));
-}
-
-.splash__sponsors[data-sponsor-layout="lg-1-md-2"] .sponsor__logos--md,
-.splash__sponsors[data-sponsor-layout="lg-2"] .sponsor__logos--lg {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .sponsor__logos + .sponsor__logos {
@@ -280,8 +267,8 @@ img {
     background: var(--bt-sponsor-frame-bg);
 }
 
-.sponsor__logo--lg {
-    aspect-ratio: var(--bt-sponsor-lg-ratio);
+.sponsor__logo--lead {
+    aspect-ratio: var(--bt-sponsor-lead-ratio);
 }
 
 .sponsor__logo--md {
@@ -293,65 +280,6 @@ img {
     max-height: 100%;
     display: block;
     object-fit: contain;
-}
-
-.sponsor-layout-picker {
-    position: fixed;
-    right: var(--space-4);
-    bottom: calc(var(--bt-header-action-height) + var(--space-12));
-    z-index: 300;
-    margin: 0;
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid rgb(255 255 255 / 0.34);
-    border-radius: 999px;
-    color: var(--color-neutral-0);
-    background: rgb(2 11 30 / 0.88);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font: inherit;
-    font-size: var(--font-size-14);
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-.sponsor-layout-picker:hover {
-    border-color: rgb(255 255 255 / 0.7);
-    background: rgb(12 25 54 / 0.94);
-}
-
-.sponsor-layout-picker:focus-within {
-    border-color: rgb(255 255 255 / 0.8);
-    outline: 2px solid var(--color-neutral-0);
-    outline-offset: 3px;
-}
-
-.sponsor-layout-picker__label {
-    color: rgb(255 255 255 / 0.72);
-    font-size: var(--font-size-12);
-}
-
-.sponsor-layout-picker__select {
-    min-height: 32px;
-    margin: 0;
-    padding: 4px 30px 4px var(--space-2);
-    border: 0;
-    border-radius: 999px;
-    color: var(--color-neutral-0);
-    background-color: rgb(255 255 255 / 0.12);
-    font: inherit;
-    font-size: var(--font-size-14);
-    cursor: pointer;
-    color-scheme: dark;
-}
-
-.sponsor-layout-picker__select:focus {
-    outline: none;
 }
 
 .splash__actions {
@@ -837,7 +765,7 @@ br.venue-br {
 
 @media (max-width: 767px) {
     .splash__sponsors {
-        --bt-sponsor-lg-width: clamp(170px, calc(85.81px + 22.45vw), 258px);
+        --bt-sponsor-lead-width: clamp(170px, calc(85.81px + 22.45vw), 258px);
         --bt-sponsor-md-width: clamp(126.5px, calc(63.834px + 16.71vw), 192px);
     }
 
@@ -955,21 +883,6 @@ br.venue-br {
         justify-content: center;
         justify-items: stretch;
         gap: var(--space-3);
-    }
-
-    .sponsor-layout-picker {
-        right: var(--space-3);
-        bottom: calc(var(--bt-header-action-height) * 2 + var(--space-3) + var(--space-8));
-        padding: var(--space-1) var(--space-2);
-    }
-
-    .sponsor-layout-picker__label {
-        display: none;
-    }
-
-    .sponsor-layout-picker__select {
-        min-height: 30px;
-        font-size: var(--font-size-12);
     }
 
     .splash__website {
