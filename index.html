@@ -21,7 +21,7 @@
     <link rel="modulepreload" href="vendor/paper-shaders/vertex-shader.js">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/splash.css?v=20260903-27">
+    <link rel="stylesheet" href="css/splash.css?v=20260903-29">
     <script type="module" blocking="render" src="js/hero-v2-cta.js?v=20260902-6"></script>
 </head>
 
@@ -56,7 +56,7 @@
                     <p class="splash__venue">Samyan Mitrtown Hall <br class="venue-br">ชั้น 5 ศูนย์การค้าสามย่านมิตรทาวน์</p>
                 </div>
 
-                <div class="splash__sponsors" data-sponsor-layout="lg-1-md-1" aria-label="ผู้สนับสนุน">
+                <div class="splash__sponsors" data-sponsor-layout="lg-1-md-1" aria-label="ผู้สนับสนุน" hidden>
                     <ul class="sponsor__logos sponsor__logos--lg">
                         <li class="sponsor__logo sponsor__logo--lg"></li>
                     </ul>
@@ -116,7 +116,7 @@
             <div id="cta-slot" class="splash__register"></div>
         </div>
 
-        <div class="sponsor-layout-picker">
+        <div class="sponsor-layout-picker" hidden>
             <label class="sponsor-layout-picker__label" for="sponsor-layout-select">รูปแบบ Sponsor</label>
             <select class="sponsor-layout-picker__select" id="sponsor-layout-select" data-sponsor-layout-select>
                 <option value="lg-1-md-1">LG 1 + MD 1</option>

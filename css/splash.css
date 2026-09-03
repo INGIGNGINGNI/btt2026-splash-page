@@ -239,6 +239,11 @@ img {
     margin-top: var(--space-8);
 }
 
+.splash__sponsors[hidden],
+.sponsor-layout-picker[hidden] {
+    display: none !important;
+}
+
 .splash__sponsors[data-sponsor-layout="lg-1-md-2"] {
     width: min(calc(var(--bt-sponsor-md-width) * 2 + var(--space-3)), 100%);
 }
@@ -837,6 +842,11 @@ br.venue-br {
         min-height: calc(100dvh + 96px);
     }
 
+    .splash__event {
+        margin-top: 0;
+        padding-top: var(--space-6);
+    }
+
     .splash__scene {
         bottom: -72px;
     }
@@ -966,7 +976,7 @@ br.venue-br {
     }
 
     .splash__event {
-        margin-top: var(--space-0);
+        margin-top: auto;
         padding: var(--space-6) var(--space-4);
         width: 100%;
     }
