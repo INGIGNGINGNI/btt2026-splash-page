@@ -11,18 +11,12 @@
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="images/splash-btt2026-logo.webp?v=20260902-2" as="image" fetchpriority="high">
     <link rel="preload" href="images/ship.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="images/QR-BT2026.png" as="image" fetchpriority="high">
     <link rel="preload" href="fonts/fc-minimal-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/fc-minimal-medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="modulepreload" href="js/liquid-metal-button.js">
-    <link rel="modulepreload" href="vendor/paper-shaders/shader-mount.js">
-    <link rel="modulepreload" href="vendor/paper-shaders/shaders/liquid-metal.js">
-    <link rel="modulepreload" href="vendor/paper-shaders/shader-utils.js">
-    <link rel="modulepreload" href="vendor/paper-shaders/shader-sizing.js">
-    <link rel="modulepreload" href="vendor/paper-shaders/vertex-shader.js">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/splash.css?v=20260903-34">
-    <script type="module" blocking="render" src="js/hero-v2-cta.js?v=20260902-6"></script>
+    <link rel="stylesheet" href="css/splash.css?v=20260904-2">
 </head>
 
 <body>
@@ -55,6 +49,9 @@
                     <p class="splash__time"><time datetime="2026-10-31T09:00:00+07:00">เวลา 09:00 - 18:30 น.</time></p>
                     <p class="splash__venue">Samyan Mitrtown Hall <br class="venue-br">ชั้น 5 ศูนย์การค้าสามย่านมิตรทาวน์</p>
                 </div>
+
+                <img class="splash__qr" src="images/QR-BT2026.png" width="956" height="1087"
+                    alt="QR Code สำหรับลงทะเบียน BetterTrade 2026" fetchpriority="high">
 
                 <div class="splash__sponsors" data-sponsor-layout="lg-1-md-1" aria-label="ผู้สนับสนุน" hidden>
                     <ul class="sponsor__logos sponsor__logos--lg">
@@ -108,12 +105,6 @@
                         height="900" alt="">
                 </div>
             </div>
-        </div>
-
-        <div class="splash__actions" aria-label="ตัวเลือกการเข้าชมเว็บไซต์">
-            <a class="bt-action-button bt-action-button--secondary bt-action-button--xl bt-action-button--header splash__website"
-                href="https://www.efinancethai.com/">เข้าสู่เว็บไซต์ efinanceThai</a>
-            <div id="cta-slot" class="splash__register"></div>
         </div>
 
         <div class="sponsor-layout-picker" hidden>
