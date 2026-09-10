@@ -28,10 +28,22 @@ if (sponsors && layoutSelect) {
     const createGroup = ({ size, count }) => {
         const list = document.createElement('ul');
         list.className = `sponsor__logos sponsor__logos--${size}`;
+        list.hidden = size === 'md';
 
         for (let index = 0; index < count; index += 1) {
             const item = document.createElement('li');
             item.className = `sponsor__logo sponsor__logo--${size}`;
+
+            if (size === 'lg') {
+                const image = document.createElement('img');
+                item.classList.add('sponsor__logo--has-image');
+                image.src = 'images/sponsors-logo.webp';
+                image.width = 517;
+                image.height = 241;
+                image.alt = 'ผู้สนับสนุน BetterTrade 2026';
+                item.append(image);
+            }
+
             list.append(item);
         }
 
