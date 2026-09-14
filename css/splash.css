@@ -314,6 +314,14 @@ img {
     background: transparent;
 }
 
+.sponsor__logo--placeholder {
+    color: var(--color-neutral-950);
+    background: var(--color-neutral-0);
+    font-size: 18px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+}
+
 .sponsor__logo img {
     width: 100%;
     height: 100%;

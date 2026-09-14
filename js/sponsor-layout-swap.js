@@ -40,7 +40,7 @@ if (sponsors && layoutSelect) {
             const item = document.createElement('li');
             item.className = `sponsor__logo sponsor__logo--${size}`;
 
-            if (size === 'lg') {
+            if (size === 'lg' && index === 0) {
                 const image = document.createElement('img');
                 item.classList.add('sponsor__logo--has-image');
                 image.src = 'images/sponsors-logo.webp';
@@ -48,6 +48,9 @@ if (sponsors && layoutSelect) {
                 image.height = 241;
                 image.alt = 'ผู้สนับสนุน BetterTrade 2026';
                 item.append(image);
+            } else if (size === 'lg') {
+                item.classList.add('sponsor__logo--placeholder');
+                item.textContent = 'Size L';
             }
 
             list.append(item);
