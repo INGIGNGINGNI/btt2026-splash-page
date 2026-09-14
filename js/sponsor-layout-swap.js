@@ -22,6 +22,12 @@ const layouts = [
             { size: 'lg', count: 2 },
         ],
     },
+    {
+        id: 'lg-3',
+        groups: [
+            { size: 'lg', count: 3 },
+        ],
+    },
 ];
 
 if (sponsors && layoutSelect) {
