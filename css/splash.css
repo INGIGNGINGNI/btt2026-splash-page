@@ -86,7 +86,7 @@ img {
     z-index: 0;
     overflow: hidden;
     transform: translateX(-50%);
-    background: url('../images/background.png') var(--splash-background-position) / cover no-repeat;
+    background: url('../images/background-light.png') var(--splash-background-position) / cover no-repeat;
 }
 
 .splash__background::after {
@@ -116,6 +116,18 @@ img {
 
 .splash__background-video.is-active {
     opacity: 1;
+}
+
+/* Wall art is exported on the full 1920 x 1080 canvas, so it stretches exactly like the video. */
+.splash__wall {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: var(--splash-background-position);
+    pointer-events: none;
 }
 
 .splash__frame::before {
@@ -195,11 +207,10 @@ img {
 
 .splash__logo-sub {
     margin: var(--space-8) 0 0;
-    color: var(--color-neutral-0);
+    color: var(--color-text-primary);
     font-size: var(--font-size-20);
     font-weight: var(--font-weight-regular);
     line-height: 1.5;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .splash__logo-sub strong,
@@ -219,12 +230,17 @@ img {
     font-size: var(--splash-event-size);
     font-weight: var(--font-weight-medium);
     line-height: var(--splash-event-line-height);
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38);
 }
 
 .splash__event p {
     margin: 0;
     white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+    .splash__event {
+        color: var(--color-text-primary);
+    }
 }
 
 .splash__sponsors {
@@ -397,8 +413,8 @@ img {
     min-height: var(--bt-header-action-height);
     padding: var(--space-4);
     padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
-    /* background-color: var(--color-surface-page); */
-    background: radial-gradient(20% 100% at 35% 0%, rgba(115, 130, 170, 0.28), transparent), linear-gradient(rgb(25, 39, 74) 0%, rgb(2, 11, 30) 100%);
+    background: var(--bt-color-white);
+    color: var(--color-text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -434,7 +450,6 @@ img {
 
 .splash__venue {
     margin-top: var(--space-4) !important;
-    color: var(--color-neutral-0);
     font-size: calc(var(--font-size-24) - 2px);
     font-weight: var(--font-weight-regular);
     line-height: 1.5;
@@ -817,7 +832,6 @@ br.venue-br {
         flex-direction: column;
         align-items: center;
         line-height: 1.22;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
     }
 
     .splash__sponsors {
@@ -1032,6 +1046,7 @@ br.venue-br {
 
     .splash__frame::before {
         display: block;
+        background: rgb(0 0 0 / 0.15);
     }
 
     .splash__frame::after,
@@ -1133,6 +1148,7 @@ br.venue-br {
 
     .splash__logo-sub {
         margin: var(--space-4) var(--space-0) var(--space-4);
+        color: var(--color-neutral-0);
         font-size: var(--font-size-14);
     }
 }
