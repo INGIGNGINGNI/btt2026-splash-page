@@ -1208,6 +1208,28 @@ br.venue-br {
     }
 }
 
+/* Phones turned sideways are too short for the locked one-screen layout; let the content column
+   scroll inside the still-locked page so the event details and sponsors can clear the action bar. */
+@media (max-width: 991px) and (orientation: landscape) {
+    .splash__content {
+        overflow-y: auto;
+    }
+
+    .splash__logo-sub {
+        color: var(--color-neutral-0);
+    }
+
+    .splash__frame::before {
+        display: block;
+        background: rgb(0 0 0 / 0.15);
+    }
+
+    .splash__frame::after,
+    .splash__frame.is-scrolled::after {
+        display: none;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     *,
