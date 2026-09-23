@@ -51,15 +51,15 @@ img {
 
 .splash {
     --splash-frame-max-width: 1600px;
-    --splash-content-left: 5.3%;
+    --splash-content-left: 8cqw;
     --splash-content-top: 50%;
-    --splash-content-width: 42%;
+    --splash-content-width: 42cqw;
     --splash-title-width: 72%;
     --splash-brand-title-gap: 16px;
     --splash-title-event-gap: clamp(18px, calc(15vh - 90px), 72px);
     --splash-event-size: clamp(16px, 1.55vw, 30px);
     --splash-event-line-height: 1.28;
-    --splash-scene-left: 42.5%;
+    --splash-scene-left: 50%;
     --splash-scene-width: min(58%, 90vh, 1080px);
 
     position: fixed;
@@ -128,6 +128,21 @@ img {
     object-fit: fill;
     object-position: var(--splash-background-position);
     pointer-events: none;
+}
+
+@media (min-width: 992px) {
+    .splash__wall {
+        width: auto;
+        max-width: var(--splash-wall-max);
+    }
+
+    .splash__wall--left {
+        right: auto;
+    }
+
+    .splash__wall--right {
+        left: auto;
+    }
 }
 
 .splash__frame::before {
@@ -272,13 +287,19 @@ img {
     width: min(calc(var(--bt-sponsor-lg-width) * 3 + var(--space-3) * 2), 100%);
 }
 
+.splash__sponsors[data-sponsor-layout="lg-4"] {
+    width: min(calc(var(--bt-sponsor-lg-width) * 4 + var(--space-3) * 3), 100%);
+}
+
 .sponsor__logos {
     width: 100%;
     margin: 0;
     padding: 0;
+    --sponsor-gap: var(--space-4);
+
     display: grid;
     justify-content: center;
-    gap: var(--space-8);
+    gap: var(--sponsor-gap);
     list-style: none;
 }
 
@@ -297,6 +318,31 @@ img {
 
 .splash__sponsors[data-sponsor-layout="lg-3"] .sponsor__logos--lg {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Each box keeps its quarter-row size; hidden boxes create no column, so the visible ones stay centred. */
+.splash__sponsors[data-sponsor-layout="lg-4"] .sponsor__logos--lg {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - var(--sponsor-gap) * 3) / 4);
+}
+
+/* Keep sponsor boxes clear of the wall art. Desktop walls are 257/256 x 1107 strips at the viewport
+   edges, capped so they stop short of the content column; the row is also capped around its centre. */
+@media (min-width: 992px) {
+    .splash {
+        --splash-wall-max: calc((100vw - 100cqw) / 2 + var(--splash-content-left) - var(--space-3));
+    }
+
+    .splash__sponsors {
+        --sponsor-center: calc(var(--splash-content-left) + var(--splash-content-width) / 2);
+        --sponsor-frame-inset: calc((100vw - 100cqw) / 2);
+        --sponsor-wall-left: calc(min(100cqh * 257 / 1107, var(--splash-wall-max)) - var(--sponsor-frame-inset));
+        --sponsor-wall-right: calc(100cqw + var(--sponsor-frame-inset) - min(100cqh * 256 / 1107, var(--splash-wall-max)));
+
+        max-width: calc(2 * min(var(--sponsor-center) - var(--sponsor-wall-left),
+                    var(--sponsor-wall-right) - var(--sponsor-center)) - 2 * var(--space-3));
+    }
 }
 
 .sponsor__logos + .sponsor__logos {
@@ -321,7 +367,8 @@ img {
     aspect-ratio: var(--bt-sponsor-md-ratio);
 }
 
-.sponsor__logos--md[hidden] {
+.sponsor__logos--md[hidden],
+.sponsor__logo[hidden] {
     display: none !important;
 }
 
@@ -333,7 +380,7 @@ img {
 .sponsor__logo--placeholder {
     color: var(--color-neutral-950);
     background: var(--color-neutral-0);
-    font-size: clamp(22px, 2.5vw, 36px);
+    font-size: clamp(16px, 2.5vw, 24px);
     font-weight: var(--font-weight-medium);
     line-height: 1;
 }
@@ -449,8 +496,8 @@ img {
 }
 
 .splash__venue {
-    margin-top: var(--space-4) !important;
-    font-size: calc(var(--font-size-24) - 2px);
+    margin-top: var(--space-8) !important;
+    font-size: var(--font-size-20);
     font-weight: var(--font-weight-regular);
     line-height: 1.5;
 }
@@ -669,9 +716,9 @@ br.venue-br {
 @media (max-width: 1199px) {
     .splash {
         --splash-frame-max-width: 1600px;
-        --splash-content-left: 5.3%;
+        --splash-content-left: 5.3cqw;
         --splash-content-top: 50%;
-        --splash-content-width: 42%;
+        --splash-content-width: 42cqw;
         --splash-title-width: 84%;
         --splash-brand-title-gap: 16px;
         --splash-title-event-gap: clamp(18px, calc(15vh - 80px), 72px);
@@ -751,6 +798,10 @@ br.venue-br {
 
     .splash__background-video {
         object-fit: cover;
+    }
+
+    .splash__wall--right {
+        transform: scaleX(-1);
     }
 
     .splash__frame {
@@ -1084,8 +1135,12 @@ br.venue-br {
         width: min(calc(var(--bt-sponsor-lg-width) * 3 + var(--space-2) * 2), 100%);
     }
 
+    .splash__sponsors[data-sponsor-layout="lg-4"] {
+        width: min(calc(var(--bt-sponsor-lg-width) * 4 + var(--space-2) * 3), 100%);
+    }
+
     .sponsor__logos {
-        gap: var(--space-5);
+        --sponsor-gap: var(--space-5);
     }
 
     .splash__event p {
