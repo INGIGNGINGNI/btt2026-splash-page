@@ -327,7 +327,7 @@ img {
     grid-auto-columns: calc((100% - var(--sponsor-gap) * 3) / 4);
 }
 
-/* Keep sponsor boxes clear of the wall art. Desktop walls are 257/256 x 1107 strips at the viewport
+/* Keep sponsor boxes clear of the wall art. Desktop walls are 209/206 x 1107 strips at the viewport
    edges, capped so they stop short of the content column; the row is also capped around its centre. */
 @media (min-width: 992px) {
     .splash {
@@ -337,8 +337,8 @@ img {
     .splash__sponsors {
         --sponsor-center: calc(var(--splash-content-left) + var(--splash-content-width) / 2);
         --sponsor-frame-inset: calc((100vw - 100cqw) / 2);
-        --sponsor-wall-left: calc(min(100cqh * 257 / 1107, var(--splash-wall-max)) - var(--sponsor-frame-inset));
-        --sponsor-wall-right: calc(100cqw + var(--sponsor-frame-inset) - min(100cqh * 256 / 1107, var(--splash-wall-max)));
+        --sponsor-wall-left: calc(min(100cqh * 209 / 1107, var(--splash-wall-max)) - var(--sponsor-frame-inset));
+        --sponsor-wall-right: calc(100cqw + var(--sponsor-frame-inset) - min(100cqh * 206 / 1107, var(--splash-wall-max)));
 
         max-width: calc(2 * min(var(--sponsor-center) - var(--sponsor-wall-left),
                     var(--sponsor-wall-right) - var(--sponsor-center)) - 2 * var(--space-3));
