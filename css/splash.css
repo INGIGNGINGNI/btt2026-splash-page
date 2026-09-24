@@ -214,6 +214,11 @@ img {
     height: 0;
 }
 
+/* Keeps the logo img as the flex item so its % width still resolves against the content column. */
+.splash__logo-picture {
+    display: contents;
+}
+
 .splash__logo-art {
     flex: 0 0 auto;
     width: var(--splash-title-width);
@@ -817,8 +822,13 @@ br.venue-br {
         transform: none;
     }
 
-    .splash__frame::after {
+    .splash__frame::before {
         display: block;
+        background: rgb(0 0 0 / 0.35);
+    }
+
+    .splash__frame::after {
+        display: none;
         position: fixed;
         right: auto;
         bottom: calc(var(--bt-header-action-height) + var(--space-8) + env(safe-area-inset-bottom));
@@ -870,6 +880,7 @@ br.venue-br {
 
     .splash__logo-sub {
         margin: var(--space-6) var(--space-0) var(--space-6);
+        color: var(--color-neutral-0);
     }
 
     .splash__event {
@@ -1095,11 +1106,6 @@ br.venue-br {
         overflow: hidden;
     }
 
-    .splash__frame::before {
-        display: block;
-        background: rgb(0 0 0 / 0.15);
-    }
-
     .splash__frame::after,
     .splash__frame.is-scrolled::after {
         display: none;
@@ -1140,7 +1146,7 @@ br.venue-br {
     }
 
     .sponsor__logos {
-        --sponsor-gap: var(--space-5);
+        --sponsor-gap: var(--space-2);
     }
 
     .splash__event p {
@@ -1213,20 +1219,6 @@ br.venue-br {
 @media (max-width: 991px) and (orientation: landscape) {
     .splash__content {
         overflow-y: auto;
-    }
-
-    .splash__logo-sub {
-        color: var(--color-neutral-0);
-    }
-
-    .splash__frame::before {
-        display: block;
-        background: rgb(0 0 0 / 0.15);
-    }
-
-    .splash__frame::after,
-    .splash__frame.is-scrolled::after {
-        display: none;
     }
 }
 
