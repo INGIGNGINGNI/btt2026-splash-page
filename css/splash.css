@@ -86,7 +86,7 @@ img {
     z-index: 0;
     overflow: hidden;
     transform: translateX(-50%);
-    background: url('../images/background-light.png') var(--splash-background-position) / cover no-repeat;
+    background: url('../images/background-light.webp') var(--splash-background-position) / cover no-repeat;
 }
 
 .splash__background::after {
