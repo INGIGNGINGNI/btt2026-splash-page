@@ -95,10 +95,19 @@ img {
     z-index: 2;
     inset: 0;
     pointer-events: none;
+    /* Darken only toward the edges, easing into a clear middle. A straight ramp down to a single
+       0% stop at 52% left a sharp turning point that read as a lighter vertical strip mid-screen. */
     background: linear-gradient(90deg,
-            rgba(5, 13, 22, 0.08),
-            rgba(5, 13, 22, 0) 52%,
-            rgba(5, 13, 22, 0.10));
+            rgba(5, 13, 22, 0.08) 0%,
+            rgba(5, 13, 22, 0.045) 12%,
+            rgba(5, 13, 22, 0.018) 24%,
+            rgba(5, 13, 22, 0.004) 33%,
+            rgba(5, 13, 22, 0) 40%,
+            rgba(5, 13, 22, 0) 60%,
+            rgba(5, 13, 22, 0.005) 67%,
+            rgba(5, 13, 22, 0.022) 76%,
+            rgba(5, 13, 22, 0.055) 88%,
+            rgba(5, 13, 22, 0.10) 100%);
 }
 
 .splash__background-video {
