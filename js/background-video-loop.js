@@ -1,134 +1,39 @@
-const videos = [...document.querySelectorAll('.splash__background-video')];
-const mobileQuery = window.matchMedia('(max-width: 991px)');
-const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const video = document.querySelector('.splash__background-video');
 
-if (videos.length >= 2 && !reducedMotionQuery.matches) {
-    const crossfadeSeconds = 1.2;
-    const crossfadeMilliseconds = crossfadeSeconds * 1000;
-    let activeIndex = 0;
-    let isCrossfading = false;
-    let animationFrame = 0;
-    let swapTimer = 0;
-
-    const activeVideo = () => videos[activeIndex];
-    const standbyVideo = () => videos[(activeIndex + 1) % videos.length];
-
-    const playSilently = async (video) => {
+if (video) {
+    const playSilently = async () => {
         video.muted = true;
         video.defaultMuted = true;
+        video.loop = true;
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
 
         try {
             await video.play();
-            return true;
+            video.classList.add('is-active');
         } catch {
-            return false;
+            // The poster remains visible if the browser blocks autoplay.
         }
     };
 
-    const finishCrossfade = (outgoing, incoming) => {
-        outgoing.pause();
-        outgoing.currentTime = 0;
-        outgoing.classList.remove('is-active');
-        outgoing.style.zIndex = '1';
-        incoming.style.zIndex = '2';
-        incoming.classList.add('is-active');
-        activeIndex = (activeIndex + 1) % videos.length;
-        isCrossfading = false;
-    };
-
-    const beginCrossfade = async () => {
-        if (isCrossfading) return;
-
-        const outgoing = activeVideo();
-        const incoming = standbyVideo();
-        if (incoming.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
-
-        isCrossfading = true;
-        incoming.currentTime = 0;
-
-        if (!await playSilently(incoming)) {
-            isCrossfading = false;
-            return;
-        }
-
-        // Keep the outgoing video fully opaque underneath while the incoming
-        // video fades over it. Fading both layers at once makes their combined
-        // opacity dip to 75% halfway through the transition, allowing the
-        // poster/background to show through as a visible colour flash on some
-        // Windows GPU compositors.
-        outgoing.style.zIndex = '1';
-        incoming.style.zIndex = '2';
-        clearTimeout(swapTimer);
-        requestAnimationFrame(() => {
-            incoming.classList.add('is-active');
-            swapTimer = window.setTimeout(
-                () => finishCrossfade(outgoing, incoming),
-                crossfadeMilliseconds,
-            );
-        });
-    };
-
-    const monitorPlayback = () => {
-        const video = activeVideo();
-        const remaining = video.duration - video.currentTime;
-
-        if (Number.isFinite(remaining) && remaining <= crossfadeSeconds) {
-            beginCrossfade();
-        }
-
-        animationFrame = requestAnimationFrame(monitorPlayback);
-    };
-
-    const start = async () => {
-        const firstVideo = activeVideo();
-        firstVideo.currentTime = 0;
-        firstVideo.style.zIndex = '2';
-        standbyVideo().style.zIndex = '1';
-        firstVideo.classList.add('is-active');
-
-        if (mobileQuery.matches) {
-            firstVideo.loop = true;
-            standbyVideo().pause();
-            standbyVideo().preload = 'none';
-            await playSilently(firstVideo);
-            return;
-        }
-
-        firstVideo.loop = false;
-        standbyVideo().preload = 'auto';
-        standbyVideo().load();
-
-        if (!await playSilently(firstVideo)) return;
-        cancelAnimationFrame(animationFrame);
-        animationFrame = requestAnimationFrame(monitorPlayback);
-    };
-
-    videos.forEach((video) => {
-        video.loop = false;
-        video.muted = true;
-        video.addEventListener('ended', beginCrossfade);
-    });
-
-    if (activeVideo().readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-        start();
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        playSilently();
     } else {
-        activeVideo().addEventListener('canplay', start, { once: true });
+        video.addEventListener('canplay', playSilently, { once: true });
     }
 
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            videos.forEach(video => video.pause());
+            video.pause();
             return;
         }
 
-        playSilently(activeVideo());
+        playSilently();
     });
 
-    window.addEventListener('pageshow', () => playSilently(activeVideo()));
-    document.addEventListener('touchstart', () => playSilently(activeVideo()), {
+    window.addEventListener('pageshow', playSilently);
+    document.addEventListener('touchstart', playSilently, {
         once: true,
         passive: true,
     });
