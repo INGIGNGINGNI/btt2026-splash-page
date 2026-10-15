@@ -32,6 +32,8 @@ if (videos.length >= 2 && !reducedMotionQuery.matches) {
         outgoing.pause();
         outgoing.currentTime = 0;
         outgoing.classList.remove('is-active');
+        outgoing.style.zIndex = '1';
+        incoming.style.zIndex = '2';
         incoming.classList.add('is-active');
         activeIndex = (activeIndex + 1) % videos.length;
         isCrossfading = false;
@@ -52,13 +54,21 @@ if (videos.length >= 2 && !reducedMotionQuery.matches) {
             return;
         }
 
-        incoming.classList.add('is-active');
-        requestAnimationFrame(() => outgoing.classList.remove('is-active'));
+        // Keep the outgoing video fully opaque underneath while the incoming
+        // video fades over it. Fading both layers at once makes their combined
+        // opacity dip to 75% halfway through the transition, allowing the
+        // poster/background to show through as a visible colour flash on some
+        // Windows GPU compositors.
+        outgoing.style.zIndex = '1';
+        incoming.style.zIndex = '2';
         clearTimeout(swapTimer);
-        swapTimer = window.setTimeout(
-            () => finishCrossfade(outgoing, incoming),
-            crossfadeMilliseconds,
-        );
+        requestAnimationFrame(() => {
+            incoming.classList.add('is-active');
+            swapTimer = window.setTimeout(
+                () => finishCrossfade(outgoing, incoming),
+                crossfadeMilliseconds,
+            );
+        });
     };
 
     const monitorPlayback = () => {
@@ -75,6 +85,8 @@ if (videos.length >= 2 && !reducedMotionQuery.matches) {
     const start = async () => {
         const firstVideo = activeVideo();
         firstVideo.currentTime = 0;
+        firstVideo.style.zIndex = '2';
+        standbyVideo().style.zIndex = '1';
         firstVideo.classList.add('is-active');
 
         if (mobileQuery.matches) {
