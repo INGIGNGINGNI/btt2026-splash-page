@@ -341,6 +341,14 @@ img {
     grid-auto-columns: calc((100% - var(--sponsor-gap) * 3) / 4);
 }
 
+/* Second row: four Size M boxes, each the same fraction of a Size L box as --bt-sponsor-md-width is of
+   --bt-sponsor-lg-width, so the row shrinks with the L row at every breakpoint and stays centred under it. */
+.splash__sponsors[data-sponsor-layout="lg-4"] .sponsor__logos--md {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - var(--sponsor-gap) * 3) / 4 * 0.744186);
+}
+
 /* Keep sponsor boxes clear of the wall art. Desktop walls are 209/206 x 1107 strips at the viewport
    edges, capped so they stop short of the content column; the row is also capped around its centre. */
 @media (min-width: 992px) {
@@ -397,6 +405,12 @@ img {
     font-size: clamp(16px, 2.5vw, 24px);
     font-weight: var(--font-weight-medium);
     line-height: 1;
+}
+
+/* Size M boxes are ~3/4 of Size L, so the label steps down with them and never wraps (mobile M boxes are ~60px wide). */
+.sponsor__logo--md.sponsor__logo--placeholder {
+    font-size: clamp(12px, 1.9vw, 18px);
+    white-space: nowrap;
 }
 
 .sponsor__logo img {
