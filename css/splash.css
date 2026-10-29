@@ -1088,13 +1088,13 @@ br.venue-br {
         scrollbar-width: none;
     }
 
+    /* Fixed + inset: 0 sizes to the area Safari actually shows. 100vh / 100dvh can come out taller than
+       that (bottom tab bar, older iOS without dvh), which pushed the sponsors under the action bar. */
     body {
         position: fixed;
         inset: 0;
         width: 100%;
-        height: 100vh;
-        height: 100svh;
-        height: 100dvh;
+        height: auto;
         min-height: 0;
         overflow: hidden;
         overscroll-behavior: none;
@@ -1114,9 +1114,7 @@ br.venue-br {
 
         position: fixed;
         inset: 0;
-        height: 100vh;
-        height: 100svh;
-        height: 100dvh;
+        height: auto;
         min-height: 0;
         overflow: hidden;
     }
@@ -1242,6 +1240,22 @@ br.venue-br {
 @media (max-width: 991px) and (orientation: landscape) {
     .splash__content {
         overflow-y: auto;
+    }
+}
+
+/* Same for short portrait phones (Safari with its bottom tab bar, small iPhones): when the two sponsor
+   rows no longer fit above the action bar, the column scrolls instead of clipping. Tall phones still fit,
+   so nothing scrolls there. */
+@media (max-width: 575px) {
+    .splash__content {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .splash__content::-webkit-scrollbar {
+        display: none;
     }
 }
 
